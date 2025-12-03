@@ -1,13 +1,7 @@
 import javax.swing.SwingUtilities;
 
 public class Main {
-
-    public static void main(String[] argumentos) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new JanelaAplicacaoGrafo();
-            }
-        });
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new JanelaAplicacaoGrafo());
     }
 }

@@ -20,7 +20,6 @@ public class JanelaAplicacaoGrafo extends JFrame {
     private JTextField campoVerticeOrigem;
     private JTextField campoVerticeDestino;
     private JTextField campoBuscaInicio;
-    private JTextField campoBuscaFim;
     private JTextArea areaSaida;
 
     public JanelaAplicacaoGrafo() {
@@ -35,7 +34,7 @@ public class JanelaAplicacaoGrafo extends JFrame {
         setLocationRelativeTo(null);
 
         JPanel painelPrincipal = new JPanel(new BorderLayout());
-        JPanel painelEntradas = new JPanel(new GridLayout(5, 1, 5, 5));
+        JPanel painelEntradas = new JPanel(new GridLayout(4, 1, 5, 5));
         painelEntradas.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
         JPanel painelVertice = new JPanel(new GridLayout(1, 3, 5, 5));
@@ -64,18 +63,13 @@ public class JanelaAplicacaoGrafo extends JFrame {
         painelAresta.add(campoVerticeDestino);
         painelAresta.add(botaoRemoverAresta);
 
-        JPanel painelBusca = new JPanel(new GridLayout(2, 3, 5, 5));
-        JLabel rotuloBuscaInicio = new JLabel("Inicio BFS:");
-        JLabel rotuloBuscaFim = new JLabel("Destino BFS:");
+        JPanel painelBusca = new JPanel(new GridLayout(1, 3, 5, 5));
+        JLabel rotuloBuscaInicio = new JLabel("Inicio DFS:");
         campoBuscaInicio = new JTextField();
-        campoBuscaFim = new JTextField();
-        JButton botaoExecutarBusca = new JButton("Executar BFS");
+        JButton botaoExecutarBusca = new JButton("Executar DFS");
         painelBusca.add(rotuloBuscaInicio);
         painelBusca.add(campoBuscaInicio);
         painelBusca.add(botaoExecutarBusca);
-        painelBusca.add(rotuloBuscaFim);
-        painelBusca.add(campoBuscaFim);
-        painelBusca.add(new JLabel());
 
         JPanel painelGrafo = new JPanel(new GridLayout(1, 2, 5, 5));
         JButton botaoExibirGrafo = new JButton("Exibir Grafo");
@@ -143,7 +137,7 @@ public class JanelaAplicacaoGrafo extends JFrame {
         botaoExecutarBusca.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evento) {
-                executarBuscaLargura();
+                executarBuscaProfundidade();
             }
         });
 
@@ -212,28 +206,22 @@ public class JanelaAplicacaoGrafo extends JFrame {
         exibirGrafo();
     }
 
-    private void executarBuscaLargura() {
-        String inicio = campoBuscaInicio.getText().trim();
-        String fim = campoBuscaFim.getText().trim();
-        if (inicio.isEmpty()) {
-            adicionarTextoSaida("Vertice inicial vazio.");
-            return;
-        }
+    private void executarBuscaProfundidade() {
+    String inicio = campoBuscaInicio.getText().trim();
+    if (inicio.isEmpty()) {
+        adicionarTextoSaida("Vertice inicial vazio.");
+        return;
+    }
 
-        List<String> ordemVisita = grafo.buscaLargura(inicio);
-        adicionarTextoSaida("Ordem de visita da busca em largura a partir de " + inicio + ":");
-        adicionarTextoSaida(ordemVisita.toString());
+    List<String> ordemVisita = grafo.buscaProfundidade(inicio);
 
-        if (!fim.isEmpty()) {
-            List<String> caminho = grafo.caminhoMinimo(inicio, fim);
-            if (caminho.isEmpty()) {
-                adicionarTextoSaida("Nenhum caminho encontrado entre " + inicio + " e " + fim + ".");
-            } else {
-                adicionarTextoSaida("Caminho minimo em numero de arestas entre " + inicio + " e " + fim + ":");
-                adicionarTextoSaida(caminho.toString());
-                int distancia = caminho.size() - 1;
-                adicionarTextoSaida("Distancia em numero de arestas: " + distancia);
-            }
-        }
+    adicionarTextoSaida("Ordem de visita da busca em profundidade a partir de " + inicio + ":");
+    adicionarTextoSaida(ordemVisita.toString());
+    
+    }
+
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> new JanelaAplicacaoGrafo());
     }
 }

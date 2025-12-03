@@ -1,12 +1,21 @@
 ## Projeto
 
-Grafo com Busca em Largura (BFS) e Interface Swing
+Grafo com Busca em Profundidade (DFS) e Interface Swing
 
 ## Descrição do Problema e Solução
 
 O objetivo do trabalho é implementar uma estrutura de grafo com operações básicas e, opcionalmente, algoritmos clássicos.
-A solução desenvolvida utiliza um grafo não direcionado representado por lista de adjacência, permitindo adicionar e remover vértices e arestas, exibir o grafo e executar a Busca em Largura (BFS).
-Também foi criada uma interface gráfica simples para demonstrar o funcionamento do grafo e do algoritmo.
+A solução desenvolvida utiliza um grafo não direcionado representado por lista de adjacência, permitindo:
+
+adicionar e remover vértices
+
+adicionar e remover arestas
+
+exibir o grafo
+
+executar a Busca em Profundidade (DFS) a partir de um vértice inicial
+
+Também foi criada uma interface gráfica simples em Java Swing para demonstrar o funcionamento do grafo e do algoritmo de busca.
 
 ## Linguagme Utilizada
 
@@ -16,7 +25,7 @@ Java 8+
 
 `Exemplo 1: Criar grafo de amigos` 
 
-## Entrada
+## Entrada (arestas adicionadas):
 
 Ana - Bruno
 Ana - Carla
@@ -24,7 +33,7 @@ Bruno - Diego
 Carla - Diego
 Diego - Elisa
 
-## Saída
+## Saída (representação do grafo):
 
 Ana -> [Bruno, Carla]
 Bruno -> [Ana, Diego]
@@ -33,34 +42,39 @@ Diego -> [Bruno, Carla, Elisa]
 Elisa -> [Diego]
 
 
-`Exemplo 2: Criar grafo de amigos` 
+`Exemplo 2: Execução da DFS` 
 
 ## Entrada
 
-Início: Ana
-Destino: Elisa
+Início da DFS: Ana
 
 ## Saída 
 
-Ordem de visita: [Ana, Bruno, Carla, Diego, Elisa]
-Caminho mínimo: [Ana, Bruno, Diego, Elisa]
-Distancia: 3
+Ordem de visita (DFS) a partir de Ana:
+[Ana, Bruno, Diego, Carla, Elisa]
+
+(A ordem exata pode variar conforme a ordem de visita dos vizinhos, mas sempre segue a lógica da busca em profundidade.)
 
 ## Requisitos Implementados
 
 Requisitos mínimos:
 
-Representação do grafo (lista de adjacência)
+Representação do grafo por lista de adjacência
 
 Adicionar vértice
-Remover vértice
-Adicionar aresta
-Remover aresta
-Exibir grafo
-Caso de uso demonstrativo (rede de amigos)
-Requisito avançado:
-Algoritmo BFS com: Ordem de visita
 
-Caminho mínimo em número de arestas
+Remover vértice
+
+Adicionar aresta
+
+Remover aresta
+
+Exibir grafo
+
+Caso de uso demonstrativo (rede de amigos)
+
+Requisito avançado:
+
+Implementação do algoritmo clássico DFS (Busca em Profundidade), exibindo a ordem de visita dos vértices a partir de um vértice inicial escolhido pelo usuário na interface gráfica.
 
 
